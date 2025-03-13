@@ -12,7 +12,6 @@ jobs:
     name: Get Selected Checkboxes
     runs-on: ubuntu-latest
     outputs: # This needs to be set if you want to consume the output on another job
-      format: 'list'
       selected: ${{ steps.get-selected-step.outputs.selected}}
     steps:
       - name: Checkout
@@ -22,6 +21,9 @@ jobs:
       - name: Get Selected
         id: get-selected-step
         uses: joao-zanutto/get-selected@v1
+        with:
+          separator: ','
+          format: 'list'
 
       - name: Consume on the same job
         run: echo ${{ steps.get-selected-step.outputs.selected }}
