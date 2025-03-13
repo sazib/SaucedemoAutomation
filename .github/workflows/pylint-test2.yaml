@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch:
+    inputs:
+      option1:
+        type: boolean
+      option2:
+        type: boolean
+      option3:
+        type: boolean
+jobs:
+  get-selected:
+    name: Get Selected Checkboxes
+    runs-on: ubuntu-latest
+    outputs: # This needs to be set if you want to consume the output on another job
+      selected: ${{ steps.get-selected-step.outputs.selected}}
+      run: echo ${{selected}}
+    
+
+  consume-on-another-job:
+    runs-on: ubuntu-latest
+    name: Consume Output
+    needs: get-selected
+    steps:
+      - name: Print
+        run: echo ${{ needs.get-selected.outputs.selected }}
