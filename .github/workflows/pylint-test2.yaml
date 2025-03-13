@@ -1,11 +1,11 @@
 on:
   workflow_dispatch:
     inputs:
-      option1:
+      Samsung Galaxy S24:
         type: boolean
-      option2:
+      Samsung Galaxy S25 Ultra:
         type: boolean  
-      option3:
+      iPhone 15:
         type: boolean
 jobs:
   get-selected:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Get Selected
         id: get-selected-step
-        uses: joao-zanutto/get-selected@v1
+        uses: joao-zanutto/get-selected@v1.1.1
         with:
           separator: ','
           format: 'list'
