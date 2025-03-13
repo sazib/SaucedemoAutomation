@@ -4,7 +4,7 @@ on:
       option1:
         type: boolean
       option2:
-        type: boolean
+        type: boolean  
       option3:
         type: boolean
 jobs:
@@ -12,9 +12,19 @@ jobs:
     name: Get Selected Checkboxes
     runs-on: ubuntu-latest
     outputs: # This needs to be set if you want to consume the output on another job
+      format: 'list'
       selected: ${{ steps.get-selected-step.outputs.selected}}
-      run: echo ${{selected}}
-    
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Get Selected
+        id: get-selected-step
+        uses: joao-zanutto/get-selected@v1
+
+      - name: Consume on the same job
+        run: echo ${{ steps.get-selected-step.outputs.selected }}
 
   consume-on-another-job:
     runs-on: ubuntu-latest
