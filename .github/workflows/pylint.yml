@@ -19,7 +19,7 @@ jobs:
       uses: boasihq/interactive-inputs@v2
       with:
         ngrok-authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
-        notifier-slack-enabled: "true"
+        notifier-slack-enabled: "false"
         notifier-slack-channel: "# shopfront-automation-reports"
         notifier-slack-token: ${{ secrets.SLACK_TOKEN }}
         notifier-discord-enabled: "false"
