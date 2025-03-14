@@ -20,7 +20,7 @@ jobs:
       with:
         ngrok-authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
         notifier-slack-enabled: "false"
-        notifier-slack-channel: "#notificaitons"
+        notifier-slack-channel: "#test-gha"
         notifier-slack-token: ${{ secrets.SLACK_TOKEN }}
         notifier-discord-enabled: "false"
         notifier-discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
@@ -28,12 +28,6 @@ jobs:
         title: "A batch of 10 feature flags have been added to be deployed. Would you like to proceed?"
         interactive: |
           fields:
-            - label: continue-roll-out
-              properties:
-                display: Continue to roll out?
-                defaultValue: 'false'
-                type: boolean
-                required: true
             - label: exclude-domains
               properties:
                 description: Select the domains to exclude from the roll out
@@ -41,18 +35,7 @@ jobs:
                 type: multiselect
                 choices: 
                   ["Payments", "Bookings", "Notifications", "Support"]
-            - label: requested-files
-              properties:
-                display: Upload desired files
-                type: multifile
-                required: true
-                description: Upload desired files that are to be uploaded to the runner for processing
-            - label: notes
-              properties:
-                display: Additional note(s)
-                type: textarea
-                description: Additional notes on why this decision has been made are to be added to the audit trail.
-
+            
     - name: Display Outputs
       shell: bash
       run: |
@@ -61,18 +44,3 @@ jobs:
         echo "Detected Outputs: ${{steps.interactive-inputs.outputs.exclude-domains}}"
         echo -e "\n==============================\n"
 
-    - name: List the uploaded files in the directory
-      shell: bash
-      run: |
-        echo "Display uploaded files"
-        echo -e "\n==============================\n"
-        ls -la ${{ steps.interactive-inputs.outputs.requested-files }} # Use the label of the multifile/file field as the key to get the uploaded file directory
-        echo -e "\n==============================\n"
-
-  consume-on-another-job:
-    runs-on: ubuntu-latest
-    name: Consume Output
-    needs: get-selected
-    steps:
-      - name: Print
-        run: echo ${{ needs.get-selected.outputs.selected }}
