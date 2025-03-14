@@ -20,7 +20,7 @@ jobs:
       with:
         ngrok-authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
         notifier-slack-enabled: "false"
-        notifier-slack-channel: "#shopfront-automation-reports"
+        notifier-slack-channel: "# shopfront-automation-reports"
         notifier-slack-token: ${{ secrets.SLACK_TOKEN }}
         notifier-discord-enabled: "false"
         notifier-discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
