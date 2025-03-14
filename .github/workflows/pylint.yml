@@ -58,7 +58,7 @@ jobs:
       run: |
         echo "Display Outputs"
         echo -e "\n==============================\n"
-        echo "Detected Outputs: ${{join(steps.interactive-inputs.outputs.*, '\n')}}"
+        echo "Detected Outputs: ${{steps.interactive-inputs.outputs.exclude-domains}}"
         echo -e "\n==============================\n"
 
     - name: List the uploaded files in the directory
