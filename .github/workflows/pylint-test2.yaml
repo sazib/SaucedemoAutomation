@@ -1,11 +1,55 @@
 on:
   workflow_dispatch:
     inputs:
-      Samsung Galaxy S24:
+      Samsung Galaxy S23 Ultra:
         type: boolean
-      Samsung Galaxy S25 Ultra:
-        type: boolean  
+      Samsung Galaxy S23:
+        type: boolean
+      Samsung Galaxy S22 Ultra:
+        type: boolean
+      Samsung Galaxy S22 Plus:
+        type: boolean
+      Samsung Galaxy S22:
+        type: boolean
+      Samsung Galaxy S21 Ultra:
+        type: boolean
+      Samsung Galaxy S21:
+        type: boolean
+      Samsung Galaxy M52:
+        type: boolean
+      Samsung Galaxy M32:
+        type: boolean
+      Google Pixel 9 Pro XL:
+        type: boolean
+      Google Pixel 8 Pro:
+        type: boolean
+      Google Pixel 8:
+        type: boolean
+      Google Pixel 7 Pro:
+        type: boolean
+      Google Pixel 7:
+        type: boolean
+      iPhone 15 Pro Max:
+        type: boolean
+      iPhone 15 Pro:
+        type: boolean
+      iPhone 15 Plus:
+        type: boolean
       iPhone 15:
+        type: boolean
+      iPhone 14 Pro Max:
+        type: boolean
+      iPhone 14 Pro:
+        type: boolean
+      iPhone 14 Plus:
+        type: boolean
+      iPhone 14:
+        type: boolean
+      iPhone 13 Pro Max:
+        type: boolean
+      iPhone 13 Pro:
+        type: boolean
+      iPhone 13 Mini:
         type: boolean
 jobs:
   get-selected:
